@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 int conversion(double dollarAmt)
 {
@@ -15,8 +16,43 @@ int conversion(double dollarAmt)
     return quarters; 
 }
 
+int conversion2(double dollarAmt)
+{
+    int totalMoney = dollarAmt*100;
+    int quarters = floor(totalMoney/25);
+    int dimeConversion = totalMoney % 25;
+    int dimes = floor(dimeConversion/10);
+    return dimes;
+}
+
+int conversion3(double dollarAmt)
+{
+    int totalMoney = dollarAmt*100;
+    int quarters = floor(totalMoney/25);
+    int dimeConversion = totalMoney % 25;
+    int dimes = floor(dimeConversion/10);
+    int nickelConversion = dimeConversion % 10;
+    int nickels = floor(nickelConversion/10);
+    return nickels;
+}
+
+int conversion4(double dollarAmt)
+{
+    int totalMoney = dollarAmt*100;
+    int quarters = floor(totalMoney/25);
+    int dimeConversion = totalMoney % 25;
+    int dimes = floor(dimeConversion/10);
+    int nickelConversion = dimeConversion % 10;
+    int nickels = floor(nickelConversion/5);
+    int pennies= nickelConversion % 5;
+    return pennies;
+}
+
 void main(void)
 {
     int quarters = conversion(1.36);
-    printf("%d", quarters);
+    int dimes = conversion2(1.36);
+    int nickels = conversion3(1.36);
+    int pennies = conversion(1.36);
+    printf("%d quarters, %d dimes, %d nickels, %d pennies", quarters, dimes, nickels, pennies);
 }
